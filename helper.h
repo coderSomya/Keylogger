@@ -4,6 +4,7 @@
    #include <ctime>
    #include <string>
    #include <sstream>
+   #include <fstream>
 
    namespace Helper{
 
@@ -63,7 +64,16 @@
         return s.str();
      }
 
-     
+     void WriteAppLog(const std::string &s){
+        std::ofstream file
+        ("AppLog.txt", std::ios::app);
+
+        file<<"["<< Helper::DateTime().GetDateTimeString()<<"]"<<"\n"<<s<<std::endl<<"\n";
+
+        file.close();
+     }
+
+
    }
 
 
