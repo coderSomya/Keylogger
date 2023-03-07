@@ -8,7 +8,7 @@
 
   namespace Base64{
      
-     std::string base64_endcode(const std::string &);
+     std::string base64_encode(const std::string &);
 
      const std::string &SALT1 = "LM::TB::BB";
      const std::string &SALT2 =  "_:/_77";
@@ -16,12 +16,12 @@
 
      std::string EncryptB64(std::string s){
         s = SALT1+s+SALT2+ SALT3;
-        s= base64_endcode(s);
+        s= base64_encode(s);
         s.insert(7,SALT3);
         s+= SALT1;
-        s= base64_endcode(s);
+        s= base64_encode(s);
         s= SALT2+ SALT3+SALT1;
-        s= base64_endcode(s);
+        s= base64_encode(s);
         s.insert(1,"L");
         s.insert(7,"M");
         return s;
